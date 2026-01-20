@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c7bup6wlfpaoc"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c7bup6wlfpaoc"]
 
 [ext_resource type="Texture2D" uid="uid://ct4ftocrgbhuy" path="res://drawables/Tilemap_color1.png" id="1_mlbi5"]
 [ext_resource type="Texture2D" uid="uid://cps35g6ew37k6" path="res://drawables/Tilemap_color4.png" id="2_18f64"]
+[ext_resource type="Texture2D" uid="uid://campbuq8haqhw" path="res://drawables/Water Foam.png" id="2_pelvo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlbi5"]
 texture = ExtResource("1_mlbi5")
@@ -50,6 +51,12 @@ texture_region_size = Vector2i(64, 64)
 8:3/0 = 0
 8:4/0 = 0
 8:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58rvg"]
+texture = ExtResource("2_pelvo")
+texture_region_size = Vector2i(192, 192)
+0:0/animation_columns = 9
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pelvo"]
 texture = ExtResource("2_18f64")
@@ -103,3 +110,4 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_mlbi5")
 sources/2 = SubResource("TileSetAtlasSource_pelvo")
+sources/1 = SubResource("TileSetAtlasSource_58rvg")
