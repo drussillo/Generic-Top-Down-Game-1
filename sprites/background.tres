@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c7bup6wlfpaoc"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://c7bup6wlfpaoc"]
 
 [ext_resource type="Texture2D" uid="uid://ct4ftocrgbhuy" path="res://drawables/Tilemap_color1.png" id="1_mlbi5"]
 [ext_resource type="Texture2D" uid="uid://cps35g6ew37k6" path="res://drawables/Tilemap_color4.png" id="2_18f64"]
 [ext_resource type="Texture2D" uid="uid://campbuq8haqhw" path="res://drawables/Water Foam.png" id="2_pelvo"]
+[ext_resource type="Texture2D" uid="uid://caqlpvwiw406n" path="res://drawables/Shadow.png" id="4_58rvg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mlbi5"]
 texture = ExtResource("1_mlbi5")
@@ -52,12 +53,6 @@ texture_region_size = Vector2i(64, 64)
 8:4/0 = 0
 8:5/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58rvg"]
-texture = ExtResource("2_pelvo")
-texture_region_size = Vector2i(192, 192)
-0:0/animation_columns = 9
-0:0/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pelvo"]
 texture = ExtResource("2_18f64")
 texture_region_size = Vector2i(64, 64)
@@ -106,8 +101,41 @@ texture_region_size = Vector2i(64, 64)
 1:1/0 = 0
 2:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_58rvg"]
+texture = ExtResource("2_pelvo")
+texture_region_size = Vector2i(192, 192)
+0:0/animation_columns = 16
+0:0/animation_speed = 10.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.0
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.0
+0:0/animation_frame_8/duration = 1.0
+0:0/animation_frame_9/duration = 1.0
+0:0/animation_frame_10/duration = 1.0
+0:0/animation_frame_11/duration = 1.0
+0:0/animation_frame_12/duration = 1.0
+0:0/animation_frame_13/duration = 1.0
+0:0/animation_frame_14/duration = 1.0
+0:0/animation_frame_15/duration = 1.0
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8so1e"]
+texture = ExtResource("4_58rvg")
+texture_region_size = Vector2i(192, 192)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-48, -48, 48, -48, 48, 48, -48, 48)
+
 [resource]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_mlbi5")
 sources/2 = SubResource("TileSetAtlasSource_pelvo")
-sources/1 = SubResource("TileSetAtlasSource_58rvg")
+sources/4 = SubResource("TileSetAtlasSource_58rvg")
+sources/7 = SubResource("TileSetAtlasSource_8so1e")
