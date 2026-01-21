@@ -4,7 +4,7 @@ extends CharacterBody2D
 
 var attacking = false
 var guarding = false
-var speed = 200
+var speed = 15000
 var diaspeed = sqrt(pow(speed, 2) / 2)
 
 
@@ -69,5 +69,6 @@ func _play():
 func _physics_process(delta: float) -> void:
 	_input(0)
 	_play()
+	velocity *= delta
 	
 	move_and_slide()
