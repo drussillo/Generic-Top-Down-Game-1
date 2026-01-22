@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://cllek7l5wxabn"]
 
 [ext_resource type="SpriteFrames" uid="uid://d202kj3iq8lst" path="res://sprites/playerSprite.tres" id="1_x3g6e"]
-[ext_resource type="Script" uid="uid://bcidpchuk0d7j" path="res://scripts/player1.gd" id="2_30lbi"]
+[ext_resource type="Script" uid="uid://bcidpchuk0d7j" path="res://scripts/player.gd" id="2_30lbi"]
 [ext_resource type="TileSet" uid="uid://c7bup6wlfpaoc" path="res://sprites/background.tres" id="3_30lbi"]
 [ext_resource type="SpriteFrames" uid="uid://byrkqok01dcdx" path="res://sprites/pawnAxeSprite.tres" id="4_acvur"]
 [ext_resource type="SpriteFrames" uid="uid://dgid87detdke4" path="res://sprites/damage.tres" id="4_j8b0s"]
