@@ -26,6 +26,7 @@ func _play():
 		
 func _set_z_index():
 	var player_pos = get_node("../Player").global_position
+	# TODO refactor maybe?
 	if player_pos.y < position.y:
 		z_index = 1
 	else:
