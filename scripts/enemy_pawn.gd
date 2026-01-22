@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const speed = 8000
+const range = 60
 
 @onready var navagent = $NavigationAgent2D
 
@@ -14,10 +15,12 @@ func _ready() -> void:
 
 
 func _play():
-	if velocity == Vector2(0, 0):
+	if navagent.distance_to_target() < range:
+		get_node("../Player").reset_hit()
 		$EnemyPawnSprite.play("attack")
-		await $EnemyPawnSprite.animation_finished
-		get_node("../Player").hit(10)
+		await $EnemyPawnSprite.animation_looped
+		get_node("../Player/DamageSprite").playeffect()
+		get_node("../Player").hit(5)
 	else:
 		$EnemyPawnSprite.play("run")
 		

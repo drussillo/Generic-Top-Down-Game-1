@@ -7,12 +7,16 @@ var guarding = false
 var speed = 15000
 var diaspeed = sqrt(pow(speed, 2) / 2)
 var HP = 100
+var is_hit = true
 
+func reset_hit():
+	is_hit = false
 
 func hit(damage: int):
-	HP -= damage
-	print("Hit!")
-	print(HP)
+	if !is_hit and !guarding:
+		is_hit = true
+		HP -= damage
+		print("Hit! ", HP)
 
 func _input(ev):
 	if !attacking:

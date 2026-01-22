@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=4 uid="uid://cllek7l5wxabn"]
+[gd_scene load_steps=10 format=4 uid="uid://cllek7l5wxabn"]
 
 [ext_resource type="SpriteFrames" uid="uid://d202kj3iq8lst" path="res://sprites/playerSprite.tres" id="1_x3g6e"]
 [ext_resource type="Script" uid="uid://bcidpchuk0d7j" path="res://scripts/player1.gd" id="2_30lbi"]
 [ext_resource type="TileSet" uid="uid://c7bup6wlfpaoc" path="res://sprites/background.tres" id="3_30lbi"]
 [ext_resource type="SpriteFrames" uid="uid://byrkqok01dcdx" path="res://sprites/pawnAxeSprite.tres" id="4_acvur"]
-[ext_resource type="Script" uid="uid://cthkkqfoo6pjg" path="res://enemy_pawn.gd" id="4_ombsg"]
+[ext_resource type="SpriteFrames" uid="uid://dgid87detdke4" path="res://sprites/damage.tres" id="4_j8b0s"]
+[ext_resource type="Script" uid="uid://cthkkqfoo6pjg" path="res://scripts/enemy_pawn.gd" id="4_ombsg"]
+[ext_resource type="Script" uid="uid://3uajdfdlojyr" path="res://scripts/damage_sprite.gd" id="5_5xdti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30lbi"]
 size = Vector2(43, 21)
@@ -37,6 +39,7 @@ tile_map_data = PackedByteArray("AAACAAoAAQACAAAAAAABAAoAAQABAAAAAAAAAAoAAQABAAA
 tile_set = ExtResource("3_30lbi")
 
 [node name="WorldBorder" type="StaticBody2D" parent="."]
+visible = false
 collision_mask = 0
 
 [node name="WorldCollision" type="CollisionPolygon2D" parent="WorldBorder"]
@@ -55,6 +58,10 @@ shape = SubResource("RectangleShape2D_30lbi")
 [node name="Sprite" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = ExtResource("1_x3g6e")
 animation = &"guard"
+
+[node name="DamageSprite" type="AnimatedSprite2D" parent="Player"]
+sprite_frames = ExtResource("4_j8b0s")
+script = ExtResource("5_5xdti")
 
 [node name="EnemyPawn" type="CharacterBody2D" parent="."]
 z_index = -1
@@ -77,4 +84,5 @@ shape = SubResource("RectangleShape2D_30lbi")
 debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ombsg")
