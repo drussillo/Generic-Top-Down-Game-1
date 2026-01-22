@@ -1,8 +1,10 @@
 extends CharacterBody2D
 
 
-const speed = 8000
-const range = 60
+var speed = 8000
+var range = 60
+var direction = Vector2(0, 0)
+var HP = 50
 
 @onready var navagent = $NavigationAgent2D
 
@@ -16,13 +18,16 @@ func _ready() -> void:
 
 func _play():
 	if navagent.distance_to_target() < range:
-		get_node("../Player").reset_hit()
-		$EnemyPawnSprite.play("attack")
-		await $EnemyPawnSprite.animation_looped
-		get_node("../Player/DamageSprite").playeffect()
-		get_node("../Player").hit(5)
-	else:
+		velocity *= 0
+		
+func _animate():
+	$EnemyPawnSprite.flip_h = direction.x < 0
+	if velocity.x != 0 or velocity.y != 0:
 		$EnemyPawnSprite.play("run")
+	elif navagent.distance_to_target() < range:
+		$EnemyPawnSprite.play("attack")
+	else:
+		$EnemyPawnSprite.play("idle")
 		
 func _set_z_index():
 	var player_pos = get_node("../Player").global_position
@@ -31,19 +36,17 @@ func _set_z_index():
 		z_index = 1
 	else:
 		z_index = -1
+		
+func _set_direction():
+	navagent.target_position = get_node("../Player").global_position
+	var next_path_pos = navagent.get_next_path_position()
+	direction = global_position.direction_to(next_path_pos)
+	
 
 func _physics_process(delta: float) -> void:
 	_set_z_index()
-	
-	navagent.target_position = get_node("../Player").global_position
-	var next_path_pos = navagent.get_next_path_position()
-	var direction = global_position.direction_to(next_path_pos)
+	_set_direction()
 	velocity = direction * speed * delta
-	
-	$EnemyPawnSprite.flip_h = direction.x < 0
-	
-	if navagent.distance_to_target() < 60:
-		velocity = Vector2(0, 0)
-	
-	_play()	
+	_play()
+	_animate()
 	move_and_slide()
