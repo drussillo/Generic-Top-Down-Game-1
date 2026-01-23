@@ -8,7 +8,6 @@ size = Vector2(43, 21)
 
 [node name="EnemyPawn" type="CharacterBody2D"]
 z_index = -1
-collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_cbncm")
 
