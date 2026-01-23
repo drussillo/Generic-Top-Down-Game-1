@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://x1p54mi6olv4"]
+
+[ext_resource type="Script" uid="uid://cthkkqfoo6pjg" path="res://scripts/enemy_pawn.gd" id="1_cbncm"]
+[ext_resource type="SpriteFrames" uid="uid://byrkqok01dcdx" path="res://sprites/pawnAxeSprite.tres" id="2_pn8is"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30lbi"]
+size = Vector2(43, 21)
+
+[node name="EnemyPawn" type="CharacterBody2D"]
+z_index = -1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_cbncm")
+
+[node name="EnemyPawnSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_pn8is")
+animation = &"idle"
+frame = 1
+frame_progress = 0.13732724
+
+[node name="EnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_30lbi")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true

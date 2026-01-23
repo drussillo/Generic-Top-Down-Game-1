@@ -53,6 +53,7 @@ func _input(ev):
 		guarding = false
 		
 	if Input.is_action_just_pressed("Attack"):
+		# TODO hit opponent
 		current_anim = ["attack1", "attack2"].pick_random()
 		attacking = true
 		
@@ -73,6 +74,5 @@ func _animate():
 func _physics_process(delta: float) -> void:
 	_input(0)
 	_animate()
-	
 	velocity *= delta
 	move_and_slide()
