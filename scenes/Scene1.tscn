@@ -10,8 +10,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30lbi"]
 size = Vector2(43, 21)
 
-[sub_resource type="Animation" id="Animation_5xdti"]
-resource_name = "attack"
+[sub_resource type="Animation" id="Animation_5dv5l"]
+resource_name = "attackanimation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -25,9 +25,9 @@ tracks/0/keys = {
 "values": []
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_otot6"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fw15f"]
 _data = {
-&"attack": SubResource("Animation_5xdti")
+&"attackanimation": SubResource("Animation_5dv5l")
 }
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ombsg"]
@@ -87,7 +87,7 @@ script = ExtResource("5_x0ogb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
 libraries = {
-&"": SubResource("AnimationLibrary_otot6")
+&"": SubResource("AnimationLibrary_fw15f")
 }
 
 [node name="EnemyPawn" parent="." instance=ExtResource("6_6eqy8")]
