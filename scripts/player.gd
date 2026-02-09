@@ -24,7 +24,7 @@ func _input(ev):
 	
 	velocity *= 0
 
-	if !guarding:
+	if !guarding and !attacking:
 		if !Input.is_anything_pressed():
 			current_anim = "idle"
 
@@ -52,14 +52,15 @@ func _input(ev):
 	if Input.is_action_just_released("Guard"):
 		guarding = false
 		
-	if Input.is_action_just_pressed("Attack"):
-		# TODO hit opponent
-		for enemy in get_tree().get_nodes_in_group("Enemies"):
-			var distance = global_position.distance_to(enemy.global_position)
-			if distance < 150:
-				enemy.damage(10)
+	if Input.is_action_just_pressed("Attack") and !attacking:
+		# hit opponent
 		current_anim = ["attack1", "attack2"].pick_random()
 		attacking = true
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			if enemy.dead: continue
+			var distance = global_position.distance_to(enemy.global_position)
+			if distance < 150 and $Sprite.flip_h == !enemy.get_node("EnemyPawnSprite").flip_h:
+				enemy.damage(10)
 		
 
 

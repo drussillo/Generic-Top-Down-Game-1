@@ -6,10 +6,17 @@ var range = 60
 var direction = Vector2(0, 0)
 var HP = 50
 var dead = false
+enum EnemyType { AXE, KNIFE }
+var type: EnemyType
 
 @onready var navagent = $NavigationAgent2D
 
 func _ready() -> void:
+	add_to_group("Enemies")
+	type = [EnemyType.AXE, EnemyType.KNIFE].pick_random()
+	var knife_animation = preload("res://sprites/pawnKnifeSprite.tres")
+	if type == EnemyType.KNIFE:
+		$EnemyPawnSprite.sprite_frames = knife_animation
 	position = [Vector2(670, -92), 
 				Vector2(-140, 670), 
 				Vector2(1440, 1170), 
@@ -19,12 +26,17 @@ func _ready() -> void:
 
 func damage(amount: int) -> void:
 	HP -= amount;
+	$DamageSprite.playeffect()
+	print(HP)
 	if HP < 1:
 		dead = true
+		navagent.free()
+		var enemy_scene = preload("res://scenes/enemy_pawn.tscn")
+		add_sibling(enemy_scene.instantiate(), true) # TODO fixme
 
 
 func _play():
-	if navagent.distance_to_target() < range or dead:
+	if dead || navagent.distance_to_target() < range:
 		velocity *= 0
 		
 func _animate():
@@ -32,7 +44,7 @@ func _animate():
 		$EnemyPawnSprite.flip_h = direction.x < 0
 	if velocity.x != 0 or velocity.y != 0:
 		$EnemyPawnSprite.play("run")
-	elif navagent.distance_to_target() < range and !dead:
+	elif !dead and navagent.distance_to_target() < range:
 		$EnemyPawnSprite.play("attack")
 	elif dead:
 		$EnemyPawnSprite.play("dead")
@@ -48,6 +60,7 @@ func _set_z_index():
 		z_index = -1
 		
 func _set_direction():
+	if dead: return
 	navagent.target_position = get_node("../Player").global_position
 	var next_path_pos = navagent.get_next_path_position()
 	direction = global_position.direction_to(next_path_pos)

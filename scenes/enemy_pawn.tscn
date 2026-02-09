@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cthkkqfoo6pjg" path="res://scripts/enemy_pawn.gd" id="1_cbncm"]
 [ext_resource type="SpriteFrames" uid="uid://byrkqok01dcdx" path="res://sprites/pawnAxeSprite.tres" id="2_pn8is"]
+[ext_resource type="SpriteFrames" uid="uid://dgid87detdke4" path="res://sprites/damage.tres" id="3_r47x2"]
+[ext_resource type="Script" uid="uid://3uajdfdlojyr" path="res://scripts/damage_sprite.gd" id="4_t0c4q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30lbi"]
 size = Vector2(43, 21)
@@ -13,7 +15,7 @@ script = ExtResource("1_cbncm")
 
 [node name="EnemyPawnSprite" type="AnimatedSprite2D" parent="." unique_id=1004137228]
 sprite_frames = ExtResource("2_pn8is")
-animation = &"dead"
+animation = &"attack"
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="." unique_id=1204947647]
 position = Vector2(0, 24)
@@ -21,3 +23,7 @@ shape = SubResource("RectangleShape2D_30lbi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1218113871]
 debug_enabled = true
+
+[node name="DamageSprite" type="AnimatedSprite2D" parent="." unique_id=2085362684]
+sprite_frames = ExtResource("3_r47x2")
+script = ExtResource("4_t0c4q")

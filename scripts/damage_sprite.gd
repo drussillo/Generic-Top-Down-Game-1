@@ -9,8 +9,7 @@ func _ready() -> void:
 func playeffect():
 	# TODO pick random +- 10 x and y
 	show()
-	play("default")
-	await animation_finished
+	await animation_looped
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
