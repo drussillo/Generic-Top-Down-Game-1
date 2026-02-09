@@ -5,6 +5,7 @@ var speed = 8000
 var range = 60
 var direction = Vector2(0, 0)
 var HP = 50
+var dead = false
 
 @onready var navagent = $NavigationAgent2D
 
@@ -16,16 +17,25 @@ func _ready() -> void:
 	#position = Vector2(1600, 260) #debug pos
 
 
+func damage(amount: int) -> void:
+	HP -= amount;
+	if HP < 1:
+		dead = true
+
+
 func _play():
-	if navagent.distance_to_target() < range:
+	if navagent.distance_to_target() < range or dead:
 		velocity *= 0
 		
 func _animate():
-	$EnemyPawnSprite.flip_h = direction.x < 0
+	if !dead:
+		$EnemyPawnSprite.flip_h = direction.x < 0
 	if velocity.x != 0 or velocity.y != 0:
 		$EnemyPawnSprite.play("run")
-	elif navagent.distance_to_target() < range:
+	elif navagent.distance_to_target() < range and !dead:
 		$EnemyPawnSprite.play("attack")
+	elif dead:
+		$EnemyPawnSprite.play("dead")
 	else:
 		$EnemyPawnSprite.play("idle")
 		

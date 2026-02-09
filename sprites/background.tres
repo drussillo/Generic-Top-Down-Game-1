@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://c7bup6wlfpaoc"]
+[gd_resource type="TileSet" format=3 uid="uid://c7bup6wlfpaoc"]
 
 [ext_resource type="Texture2D" uid="uid://ct4ftocrgbhuy" path="res://drawables/Tilemap_color1.png" id="1_mlbi5"]
 [ext_resource type="Texture2D" uid="uid://d35ahlnpag18w" path="res://drawables/Bridge_All.png" id="2_8so1e"]

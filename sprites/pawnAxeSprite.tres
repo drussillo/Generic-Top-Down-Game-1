@@ -1,7 +1,8 @@
-[gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://byrkqok01dcdx"]
+[gd_resource type="SpriteFrames" format=3 uid="uid://byrkqok01dcdx"]
 
 [ext_resource type="Texture2D" uid="uid://vata1j8py6v" path="res://drawables/Pawn_Interact Axe.png" id="1_jgtmm"]
 [ext_resource type="Texture2D" uid="uid://d5jaai2aswcc" path="res://drawables/Pawn_Idle Axe.png" id="2_h88u2"]
+[ext_resource type="Texture2D" uid="uid://bhg51rib5dlh" path="res://drawables/Pawn_dead.png" id="2_qt2jh"]
 [ext_resource type="Texture2D" uid="uid://b44al7hrj0n15" path="res://drawables/Pawn_Run Axe.png" id="3_cwyti"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h88u2"]
@@ -27,6 +28,10 @@ region = Rect2(768, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmadi"]
 atlas = ExtResource("1_jgtmm")
 region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkuj6"]
+atlas = ExtResource("2_qt2jh")
+region = Rect2(0, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dtk4k"]
 atlas = ExtResource("2_h88u2")
@@ -108,6 +113,14 @@ animations = [{
 "loop": true,
 "name": &"attack",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkuj6")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -54,6 +54,10 @@ func _input(ev):
 		
 	if Input.is_action_just_pressed("Attack"):
 		# TODO hit opponent
+		for enemy in get_tree().get_nodes_in_group("Enemies"):
+			var distance = global_position.distance_to(enemy.global_position)
+			if distance < 150:
+				enemy.damage(10)
 		current_anim = ["attack1", "attack2"].pick_random()
 		attacking = true
 		
