@@ -5,6 +5,7 @@ var speed = 15000
 var diaspeed = sqrt(pow(speed, 2) / 2)
 var HP = 100
 var current_anim = "idle"
+var rng = RandomNumberGenerator.new()
 
 var guarding = false
 var attacking = false
@@ -24,7 +25,7 @@ func _input(ev):
 	
 	velocity *= 0
 
-	if !guarding and !attacking:
+	if !guarding:
 		if !Input.is_anything_pressed():
 			current_anim = "idle"
 
@@ -52,7 +53,7 @@ func _input(ev):
 	if Input.is_action_just_released("Guard"):
 		guarding = false
 		
-	if Input.is_action_just_pressed("Attack") and !attacking:
+	if Input.is_action_just_pressed("Attack"):
 		# hit opponent
 		current_anim = ["attack1", "attack2"].pick_random()
 		attacking = true
@@ -61,13 +62,18 @@ func _input(ev):
 			var distance = global_position.distance_to(enemy.global_position)
 			if distance < 150 and $Sprite.flip_h == !enemy.get_node("EnemyPawnSprite").flip_h:
 				enemy.damage(10)
+				get_node("../SwordHit").pitch_scale = rng.randf_range(0.8, 1.3)
+				get_node("../SwordHit").play()
+			else:
+				get_node("../SwordMiss").pitch_scale = rng.randf_range(0.8, 1.4)
+				get_node("../SwordMiss").play()
 		
 
 
 func _animate():
 	$Sprite.flip_h = !right
 	
-	if $Sprite.animation != current_anim:
+	if $Sprite.animation != current_anim || attacking:
 		$Sprite.play(current_anim)
 		if attacking:
 			await $Sprite.animation_finished
