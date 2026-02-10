@@ -110,7 +110,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bmadi")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {

@@ -8,6 +8,7 @@ var HP = 50
 var dead = false
 enum EnemyType { AXE, KNIFE }
 var type: EnemyType
+var attacking = false
 
 @onready var navagent = $NavigationAgent2D
 
@@ -33,7 +34,7 @@ func damage(amount: int) -> void:
 		$EnemyCollision.disabled = true
 		navagent.free()
 		var enemy_scene = preload("res://scenes/enemy_pawn.tscn")
-		add_sibling(enemy_scene.instantiate(), true) # TODO fixme
+		add_sibling(enemy_scene.instantiate(), true)
 
 
 func _play():
@@ -46,7 +47,7 @@ func _animate():
 	if velocity.x != 0 or velocity.y != 0:
 		$EnemyPawnSprite.play("run")
 	elif !dead and navagent.distance_to_target() < range:
-		$EnemyPawnSprite.play("attack")
+		pass#$EnemyPawnSprite.play("attack")
 	elif dead:
 		$EnemyPawnSprite.play("dead")
 	else:
@@ -67,7 +68,19 @@ func _set_direction():
 	navagent.target_position = get_node("../Player").global_position
 	var next_path_pos = navagent.get_next_path_position()
 	direction = global_position.direction_to(next_path_pos)
-	
+
+func _attack() -> void:
+	var player = get_tree().get_first_node_in_group("Player")
+	var distance = global_position.distance_to(player.global_position)
+	if distance < range and !attacking:
+		$EnemyPawnSprite.play("attack")
+		player.damage(5)
+		attacking = true
+	else:
+		await $EnemyPawnSprite.animation_finished
+		attacking = false
+		
+	# TODO ^^^
 
 func _physics_process(delta: float) -> void:
 	_set_z_index()
@@ -75,4 +88,5 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	_play()
 	_animate()
+	_attack()
 	move_and_slide()

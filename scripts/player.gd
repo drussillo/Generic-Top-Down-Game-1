@@ -12,9 +12,12 @@ var attacking = false
 var right = true  # false -> facing left
 
 
-func hit(damage: int):
-	HP -= damage
-	print("Player Hit! ", HP)
+func damage(damage: int):
+	print("player is attacked")
+	if !guarding:
+		$DamageSprite.playeffect()
+		HP -= damage
+		print("Player Hit! ", HP)
 
 func _input(ev):
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -57,17 +60,19 @@ func _input(ev):
 		# hit opponent
 		current_anim = ["attack1", "attack2"].pick_random()
 		attacking = true
-		for enemy in get_tree().get_nodes_in_group("Enemies"):
+		_attack()
+
+func _attack() -> void:
+	for enemy in get_tree().get_nodes_in_group("Enemies"):
 			if enemy.dead: continue
 			var distance = global_position.distance_to(enemy.global_position)
-			if distance < 150 and $Sprite.flip_h == !enemy.get_node("EnemyPawnSprite").flip_h:
+			if distance < 160 and $Sprite.flip_h == !enemy.get_node("EnemyPawnSprite").flip_h:
 				enemy.damage(10)
 				get_node("../SwordHit").pitch_scale = rng.randf_range(0.8, 1.3)
 				get_node("../SwordHit").play()
 			else:
 				get_node("../SwordMiss").pitch_scale = rng.randf_range(0.8, 1.4)
 				get_node("../SwordMiss").play()
-		
 
 
 func _animate():

@@ -12,26 +12,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30lbi"]
 size = Vector2(43, 21)
 
-[sub_resource type="Animation" id="Animation_5dv5l"]
-resource_name = "attackanimation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fw15f"]
-_data = {
-&"attackanimation": SubResource("Animation_5dv5l")
-}
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ombsg"]
 vertices = PackedVector2Array(1422.0938, 656.5781, 1464.0469, 648.5781, 1650.1563, 656.5781, 1652.8281, 812.7422, 1522, 822.72656, 1161.7188, 748.9531, 147.64063, 467.53125, 291.21875, 460.4297, 244.02344, 500.78906, 140.63281, 655, 256.5625, 515.9531, 246.89844, 547.14844, 576.14844, 699.6719, 754.5078, 706.52344, 749.0703, 729.9297, 687.78906, 729.4297, -181.67969, 667.0703, -183.95313, 655, 140.39063, 670.09375, 1419.9063, 410.14063, 1462.9531, 440.2422, 2029.1484, 269.85938, 2032.6719, 297.96094, 1713.1484, 296.96875, 1653.3203, 263.85156, 648.85156, 76.96875, 651.8281, -120.14844, 693.09375, -116.77344, 695.10156, 77, 971.28906, 749.9375, 972.7031, 700.71875, 1081.9609, 708.60156, 326.9922, 645.1875, 434, 642.27344, 434, 719.4297, 335.90625, 749.0469, 145.38281, 748.03906, 1461.0703, 1204.1563, 1419.9219, 1204.8281, 1417.9297, 947.1797, 1463.0625, 953.3281, 500.46875, 727.9219, 494.14063, 860.75, 492.6172, 863.03125, 336.90625, 863.9375, 268.67188, 245.13281, 206.07813, 244.14844, 206.92188, 144.21875, 267.42188, 139.25781, 530.09375, 657.2422, 570.28906, 653.78125, 524.0625, 715.6328, 271.3672, 77.96875, 338.35156, 305.82813, 276.75, 300.6875, 1527.5, 198.67188, 1651.3125, 203.60938, 1596.3516, 374.70313, 1081.5938, 565.22656, 585.0703, 563.0703, 337.34375, 561.0703, 332.5625, 491.25, 332.8203, 454.95313, 947.89844, 141.02344, 1263.8516, 407.85156, 1265.9688, 556.0625, 1264.25, 560.1719, 1071.6172, 621.0469, 591.0469, 623.9375, 941.8906, 77, 1712.1328, 364.8125, 1096.9766, 638.4531, 1517.5469, 140.00781, 1586.4219, 437.20313, 1166.2891, 909.96875, 1522, 937.35156, 1164.6094, 915, 847.78125, 910.96875, 881.75, 916.03125, 839.7578, 972.0703, 875.75, 992.8828, 654.21094, 990.1172, 698.4297, 970.9219, 659.7969, 729.21094, 318.0703, 619.90625, 316.29688, 575.8828, 249.57813, 559.2031, 321.39844, 486.39844)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5), PackedInt32Array(6, 7, 8), PackedInt32Array(9, 6, 8, 10, 11), PackedInt32Array(12, 13, 14, 15), PackedInt32Array(16, 17, 9, 18), PackedInt32Array(1, 0, 19, 20), PackedInt32Array(21, 22, 23, 24), PackedInt32Array(25, 26, 27, 28), PackedInt32Array(29, 30, 31, 5), PackedInt32Array(18, 32, 33, 34, 35, 36), PackedInt32Array(37, 38, 39, 40), PackedInt32Array(41, 42, 43, 44, 35, 34), PackedInt32Array(45, 46, 47, 48), PackedInt32Array(49, 50, 12, 51), PackedInt32Array(45, 48, 52, 25, 53, 54), PackedInt32Array(55, 56, 24, 57, 20, 19), PackedInt32Array(58, 59, 60, 61, 62, 53, 25, 28, 63, 64, 65, 66), PackedInt32Array(67, 68, 59, 58), PackedInt32Array(28, 69, 63), PackedInt32Array(23, 70, 57, 24), PackedInt32Array(31, 71, 0, 5), PackedInt32Array(63, 72, 55, 19, 64), PackedInt32Array(57, 73, 20), PackedInt32Array(74, 5, 4, 75, 40, 39), PackedInt32Array(74, 39, 76), PackedInt32Array(77, 74, 76, 78), PackedInt32Array(79, 77, 78, 80), PackedInt32Array(79, 80, 81, 82), PackedInt32Array(82, 81, 83, 15), PackedInt32Array(12, 15, 83, 41, 51), PackedInt32Array(34, 51, 41), PackedInt32Array(84, 32, 18, 9), PackedInt32Array(85, 84, 9, 86), PackedInt32Array(62, 61, 87), PackedInt32Array(10, 62, 87, 11), PackedInt32Array(9, 11, 86)])
@@ -70,7 +50,7 @@ polygon = PackedVector2Array(1166, 952, 1176, 957, 1407, 954, 1409, 1008, 1473, 
 build_mode = 1
 polygon = PackedVector2Array(1413, 442, 1411, 642, 1087, 636, 1078, 696, 961, 696, 961, 755, 1145, 765, 1159, 773, 1154, 898, 841, 899, 834, 963, 700, 962, 703, 765, 762, 760, 762, 691, 580, 696, 575, 640, 517, 645, 514, 707, 440, 706, 441, 631, 329, 634, 323, 569, 265, 573, 325, 514, 327, 567, 579, 573, 586, 634, 1080, 635, 1084, 573, 1267, 570, 1271, 435)
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1881533959]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1881533959 groups=["Player"]]
 position = Vector2(960, 540)
 collision_layer = 2
 script = ExtResource("2_fw15f")
@@ -85,26 +65,16 @@ animation = &"attack1"
 frame = 3
 frame_progress = 1.0
 
-[node name="DamageSprite" type="AnimatedSprite2D" parent="Player" unique_id=1883510905]
+[node name="DamageSprite" type="AnimatedSprite2D" parent="Player" unique_id=1698874882]
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("4_d2pwn")
 script = ExtResource("5_x0ogb")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1530293379]
-libraries/ = SubResource("AnimationLibrary_fw15f")
 
 [node name="EnemyPawn" parent="." unique_id=1465209865 groups=["Enemies"] instance=ExtResource("6_6eqy8")]
 position = Vector2(960, 740)
 
-[node name="EnemyPawn2" parent="." unique_id=2033660874 groups=["Enemies"] instance=ExtResource("6_6eqy8")]
-position = Vector2(960, 740)
-
-[node name="EnemyPawn3" parent="." unique_id=1278633966 groups=["Enemies"] instance=ExtResource("6_6eqy8")]
-position = Vector2(960, 740)
-
-[node name="EnemyPawn4" parent="." unique_id=840509886 groups=["Enemies"] instance=ExtResource("6_6eqy8")]
-position = Vector2(960, 740)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=10944379]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_ombsg")
 
 [node name="SwordHit" type="AudioStreamPlayer2D" parent="." unique_id=580195214]
